@@ -1,0 +1,30 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+{% block css %}
+{% endblock %}
+
+{% block header %}Note Creation{% endblock %}
+
+{% block content %}
+
+<div class="row well">
+
+    <form method="POST" action="{% url 'base_app:create-note' %}" >
+        {% csrf_token %}
+        <p>Title :  <input type="text" id="title" name="title" /></p>
+        <p>Subj :  <input type="text" id="subject" name="subject" /></p>
+        body : <textarea name="body" id="body"></textarea>
+        &nbsp;
+        <p> IsPublic : <input type="checkbox" id="public" name="public" /></p>
+
+        &nbsp;
+        <p><input type="submit" name="submit" class="btn btn-success "></p>
+        {% if msg %}
+        <p>{{ msg }}</p>
+        {% endif %}
+
+    </form>
+
+
+</div>
+{% endblock %}

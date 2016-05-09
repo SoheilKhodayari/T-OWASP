@@ -1,0 +1,23 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'file/css/bootstrap.min.css' %}">
+{% block header %}My Files{% endblock %}
+
+{% block content %}
+
+
+    {% for note in notes %}
+    <div class="row well">
+        <p>Title: <a href="{% url 'base_app:note-detail' note.pk %}">{{ note.title }}</a></p>
+        <p>Subject: {{ note.subject }} B</p>
+        <p>Size: {{ note.file.size }} B</p>
+
+    </div>
+    {% endfor %}
+    {% if not notes %}
+        <p>you have no notes yet. add one by this <a href="{% url 'base_app:create-note' %}">link</a></p>
+    {% endif %}
+
+
+
+{% endblock %}

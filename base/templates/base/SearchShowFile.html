@@ -1,0 +1,13 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <h2>Open File</h2>
+    <form method="get" action="{% url 'base_app:show-file' %}">
+    <input type="text" name="filename" placeholder="Filename (i.e MyNote.txt) ">
+    <input class="btn btn-primary" type="submit" name="submit" placeholder="submit">
+    </form>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+{% endblock %}

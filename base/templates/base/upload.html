@@ -1,0 +1,73 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'file/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'file/css/jquery.fileupload-ui.css' %}">
+{% endblock %}
+
+{% block header %}Upload Files{% endblock %}
+
+{% block content %}
+<style type="text/css">
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+</style>
+<div class="row well">
+
+    <form method="POST" action="{% url 'base_app:post-upload' %}" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <p>+ You can now attach your file using button below:</p>
+        <p>+ Is your file public ? : <input type="checkbox" id="public" name="public" /></p>
+
+
+
+
+        <div class="input-group">
+                <span class="input-group-btn">
+                    <span class="btn btn-primary btn-file">
+                        Browse… <input type="file"  name="files[]" multiple="">
+                    </span>
+                </span>
+                <input type="text" class="form-control"  readonly="">
+            </div>
+        &nbsp;
+        <p><input type="submit" name="submit" class="btn btn-success btn-lg"></p>
+
+    </form>
+
+
+</div>
+
+<script src="{% static 'file/js/vendor/jquery.ui.widget.js' %}"></script>
+<script src="{% static 'file/js/load-image.min.js' %}"></script>
+<script src="{% static 'file/js/canvas-to-blob.min.js' %}"></script>
+
+<script src="{% static 'file/js/jquery.iframe-transport.js' %}"></script>
+<script src="{% static 'file/js/jquery.fileupload.js' %}"></script>
+<script src="{% static 'file/js/jquery.fileupload-process.js' %}"></script>
+
+<script src="{% static 'file/js/jquery.fileupload-image.js' %}"></script>
+<script src="{% static 'file/js/jquery.fileupload-audio.js' %}"></script>
+<script src="{% static 'file/js/jquery.fileupload-video.js' %}"></script>
+
+<script src="{% static 'file/js/jquery.fileupload-validate.js' %}"></script>
+<script src="{% static 'file/js/jquery.cookie.js' %}"></script>
+
+{% endblock %}

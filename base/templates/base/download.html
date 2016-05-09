@@ -1,0 +1,27 @@
+{% extends "base/base.html" %}
+
+
+{% block header %}Download{% endblock %}
+
+{% block content %}
+
+  <div class="row well file-list">
+
+    <div><span>File name:</span> {{object.file.name}}</div>
+    <div><span>File size:</span> {{object.file.size}} B</div>
+    <div><span>Uploaded on:</span> {{ object.created }}</div>
+    <div><span>Uploaded by:</span> {{object.user.username}}</div>
+    <div><span>Is Public:</span> {% if object.public %}Yes{% else %}No{% endif %}</div>
+
+    <div class="download-btn"><button id='download' class="btn btn-primary">Download Now!</button></div>
+
+  </div>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $("#download").click(function(){
+          window.location = "{% url 'base_app:get-download' object.pk %}";
+      });
+    })
+    </script>
+
+{% endblock %}

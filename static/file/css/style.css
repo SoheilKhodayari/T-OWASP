@@ -1,0 +1,83 @@
+.page-header {
+    margin-top: 40px;
+}
+
+section#content {
+    min-height: 700px;
+}
+
+footer {
+    margin-bottom: 20px;
+}
+
+.navbar {
+    position: relative;
+}
+
+.hide {
+    display: none;
+}
+
+div.actions {
+    margin-left: 10px;
+    display: inline;
+}
+
+div.actions img {
+    cursor: pointer;
+    width: 16px;
+    margin-left: 4px;
+}
+
+.file-list {
+    line-height: 26px;
+}
+
+.file-list span {
+    font-weight: bold;
+}
+
+.file-list input[type="checkbox"] {
+    position: relative;
+    top: -3px;
+    margin-left: 5px;
+}
+
+.download-btn {
+    margin-top: 20px;
+}
+
+.error {
+    color: red;
+}
+
+.controls {
+    margin-bottom: 5px;
+}
+
+.controls input[type="checkbox"] {
+    position: relative;
+    top: 3px;
+}
+
+.fileinput-button input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px;
+    direction: ltr;
+    cursor: pointer;
+    display: block;
+}
+
+.fileinput-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.fileupload-buttonbar {
+    padding-left: 30px;
+}

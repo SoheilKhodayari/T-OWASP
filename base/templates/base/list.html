@@ -1,0 +1,42 @@
+{% extends "base/base.html" %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" media="screen" href="{% static 'file/css/bootstrap.min.css' %}">
+{% block header %}My Files{% endblock %}
+
+{% block content %}
+
+
+    <form method="get" action="">
+    {% csrf_token %}
+    <div class="input-group">
+         <input  class="form-control"  type="text" name="q" id="id_q" placeholder="search" />
+        <span class="input-group-btn">
+                <input class="btn btn-primary" type="submit" value="Submit" name="submit_search_button" />
+        </span>
+    </div>
+
+	</form>
+
+    {% if num %}
+        <h4><p style="color: #5bc0de">{{ num }} files founded</p></h4>
+    {% endif %}
+    {% for storage in files %}
+    <div class="row well">
+        <p>Name: <a href="{% url 'base_app:download-view' storage.pk %}">{{ storage.filename }}</a></p>
+        <p>Size: {{ storage.file.size }} B</p>
+
+    </div>
+    {% endfor %}
+    {% if not files %}
+        {% if query_string %}
+            <p>you've search for{{ query_string }} , but no results were found !</p>
+        {% elif error %}
+            <p>Malicious Input : {{ error }}</p>
+        {% else %}
+        <p>you have no files yet. add one by this <a href="{% url 'base_app:upload-view' %}">link</a></p>
+        {% endif %}
+    {% endif %}
+
+
+
+{% endblock %}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+  <head>
+      <meta charset="utf-8">
+      <title>Cloud</title>
+
+
+      <script type="text/javascript" src="{% static 'file/js/jquery.min.js' %}"></script>
+      <link rel="stylesheet" type="text/css" media="screen" href="{% static 'file/css/bootstrap.min.css' %}">
+      <link rel="stylesheet" type="text/css" media="screen" href="{% static 'file/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'footer/demo.css' %}">
+	    <link rel="stylesheet" href="{% static 'footer/footer-distributed-with-address-and-phones.css' %}">
+
+
+      {% block js %}
+      <script type="text/javascript">
+        setTimeout(function() {
+          $(".flashes .message").fadeOut();
+        }, 1000);
+      </script>
+      {% endblock %}
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+     <div class="navbar-inner">
+       <div class="container">
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+         </a>
+         <a class="brand" href="/">Cloud Storage</a>
+         <div class="nav-collapse collapse" id="main-menu">
+          <ul class="nav" id="main-menu-left">
+
+            <li><a href="{% url 'base_app:upload-view' %}">Upload</a></li>
+            <li><a href="{% url 'base_app:list' %}">My Files</a></li>
+              <li><a href="{% url 'base_app:public-list' %}">Public</a></li>
+              <li><a href="{% url 'base_app:note-list' %}">Notes</a></li>
+              <li><a href="{% url 'base_app:create-note' %}">Build Note</a></li>
+              <li><a href="{% url 'base_app:show-file-search' %}">Open Note</a></li>
+
+          </ul>
+             <ul class="nav pull-right" id="main-menu-right">
+            {% if not user.is_authenticated %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="/login/#toregister">Signup</a></li>
+            {% else %}
+            <li><a href="{% url 'base_app:list' %}">Welcome {{user.username}}</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
+          </ul>
+         </div>
+       </div>
+     </div>
+    </div>
+
+    <div class="container">
+
+      <section id="content">
+      <div class="page-header">
+        <h1>{% block header %}{% endblock %}</h1>
+      </div>
+
+      {% block content %}
+
+      {% endblock %}
+      </section>
+
+      <hr>
+    </div>
+
+
+  <!-- footer -->
+          <footer class="footer-distributed">
+
+			<div class="footer-left">
+
+				<h3>cloud<span>Storage</span></h3>
+
+				<p class="footer-links">
+					<a href="#">Home</a>
+					·
+					<a href="#">Blog</a>
+					·
+					<a href="#">Pricing</a>
+					·
+					<a href="#">About</a>
+					·
+					<a href="#">Faq</a>
+					·
+					<a href="#">Contact</a>
+				</p>
+
+				<p class="footer-company-name">IUST &copy; 2015</p>
+			</div>
+
+			<div class="footer-center">
+
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p><span>Designed by</span> Soheil Khodayari</p>
+				</div>
+
+
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p><a href="mailto:s_khodayari@outlook.com">s_khodayari@outlook.com</a></p>
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+				<p class="footer-company-about">
+					<span>About CloudStorage</span>
+					using this you can unbelievably share your files and keep them safe for ever ! like us on social networks
+				</p>
+
+				<div class="footer-icons">
+
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a href="#"><i class="fa fa-github"></i></a>
+
+				</div>
+
+			</div>
+
+		</footer>
+
+  </body>
+</html>
